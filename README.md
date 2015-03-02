@@ -8,7 +8,7 @@ Copyright 2015, Naiyumie (Chris Won),
 Dual licensed under the MIT or GPL Version 3 licenses.
 
 
-locale text :
+locale translate :
 나이유미게시판은 php기반의 코드이그나이터 사용해서 만든
 마치 한국형 스타일의 웹입니다.
 이 게시판을 사용하여 웹사이트를 만들었다면
