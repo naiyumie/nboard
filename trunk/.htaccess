@@ -2,7 +2,7 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteBase /
-	RewriteCond $1 !^(index\.php|images|captcha|data|include|uploads|admin_assets|robots\.txt)
+	RewriteCond $1 !^(index\.php|css|html|js|images|captcha|manual_assets|attach|admin_assets|admin_attach|assets|robots\.txt)
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.*)$ /index.php/$1 [L]
