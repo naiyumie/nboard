@@ -100,12 +100,17 @@
 
 						<?php
 							# notice 게시판은 관리자만 작성 가능
+							# 그외 게시판은 누구나 작성 가능
 						?>
-						<?php if (($this->appearance == 'notice') && ($this->auth->is_admin_signed() == TRUE)):?>
-							<div class="button_container3">
+						<div class="button_container3">
+							<?php if ($this->appearance == 'notice'):?>
+								<?php if ($this->auth->is_admin_signed() == TRUE):?>
 								<a href="/board/write/<?php echo $category?>/<?php echo $this->uri->segment(4,0)?>/" class="btn btn5 write_button">글쓰기</a>
-							</div>
-						<?php endif;?>
+								<?php endif;?>
+							<?php else:?>
+								<a href="/board/write/<?php echo $category?>/<?php echo $this->uri->segment(4,0)?>/" class="btn btn5 write_button">글쓰기</a>
+							<?php endif;?>
+						</div>
 
 						<div class="pagination1">
 							<?php echo $pagination; ?>
