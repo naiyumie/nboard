@@ -1,0 +1,23 @@
+1. CRUD 컨트롤러 소개
+1.1 CRUD 는 기본적인 CRUD 구현 예시를 보여줍니다.
+1.2 관리자 개발 표준 화면이라 볼 수 있습니다.
+1.3 관리자 표준 화면을 제시함으로써 개발의 생산성을 늘리고 불필요한 시간을 줄여 줍니다.
+1.4 간단한 게시판 정도의 기능을 가진 CRUD를 이용해서 개발해보세요.
+
+2. 로직 형태 소개
+2.1 웹의 기본적인 로직형태는 아래와 같은 형태를 띄게 됩니다.
+2.2.1 셀프
+2.2.1.1 폼전송을 자신에게 하는 흐름 형태를 말합니다. http요청이 오면 컨트롤러의 멤버함수(메소드를 말하며 이하 Controller#A) Controller#A가 자기 자신에게 폼 전송을 하여 밸리데이션 하고 해당 html#A를 보여주는 형태입니다. 컨트롤러가 view를 선택해서 보여주는 경우도 셀프로 봅니다만 그 view가 다른 컨트롤러에 폼전송을 하게 된다면 웹플로우가 됩니다.
+<img src="/manual_assets/figure/web-design-pattern_1_self.png" alt="self" style="padding:5px 20px;">
+
+2.2.2 웹플로우
+2.2.2.1 폼전송을 다음단계에 넘기고 다음 단계에서 이전 view를 호출하거나 현재 view를 호출할지 결정하는 형태를 말합니다. http요청이 오면 Controller#A를 보여주고 Controller#A는 Controller#B로 폼전송을 하며 Controller#B는 밸리데이션을 하여 html#A 혹은 html#B를 보여줄지 결정합니다. Controller#B에서 Controller#C로의 흐름도 동일 합니다. Controller#A를 거치지 않고 Controller#B와 Controller#C를 직접 접속할 경우 Controller#A로 리디렉션 되는 예외 상황이 있을 수 있습니다. 예를 들면 회원가입의 경우 여러 step을 거치는데 이러한 경우가 웹플로우라고 할 수 있습니다.
+<img src="/manual_assets/figure/web-design-pattern_2_webflow.png" alt="webflow" style="padding:5px 20px;">
+
+2.2.3 프로세스
+2.2.3.1 입력페이지에서 프로세스 페이지로 데이터를 넘기며 프로세스 페이지에서 데이터 밸리데이션을 하거나 back 시키는 형태의 흐름 형태를 말합니다. http요청이 오면 Controller#A를 호출하게 됩니다.  html#A에서 폼전송을 마치면 Controller#B는 밸리데이션 하여 Controller#A로 리디렉션 합니다. 이때 alert과 같은 메시지를 보여주게 됩니다. 이때 웹 화면이 하얀색으로 보이는 경우가 있습니다. 프로세스의 경우 여러 웹 개발에 응용되고 있으므로 딱히 예를들 필요는 없을 것 같습니다.
+<img src="/manual_assets/figure/web-design-pattern_3_process.png" alt="process" style="padding:5px 20px;">
+
+2.2.4 싱글
+2.2.4.1 단독적으로 호출 되며 프로세스만 하고 끝나는 형태입니다. 특정 html에서 http요청을 전송하면 Controller#A는 요청을 받아 특정 처리를 하고 특정 페이지로 리디렉션 시킵니다. 로그아웃(사인아웃) 같은 경우가 그 예시입니다. 리디렉션이 되지 않고 json data같은 데이터만 리턴한다면 ajax(에이잭스)로 볼 수 있습니다.
+<img src="/manual_assets/figure/web-design-pattern_4_single.png" alt="single" style="padding:5px 20px;">

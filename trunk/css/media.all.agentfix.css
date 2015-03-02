@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/**************************************************************************************************
+ _include_commons
+
+**************************************************************************************************/
+/********************************
+	block
+********************************/
+.boxmodel { display: block; margin: 0; padding: 0; }
+
+.stmt { display: inline-block; width: 100%; }
+
+/********************************
+	inline / inline-block
+********************************/
+/********************************
+	background
+********************************/
+/********************************
+	borderbox
+********************************/
+/******************************** 인터넷 익스플로러
+********************************/
+.agent_scope_ie .article_contents li a { font-size: 12px; line-height: 14px !important; }
+.agent_scope_ie .popup-navi li a { line-height: 19px !important; }
+.agent_scope_ie .main .popupzone.box .in .btn-control { top: 17px !important; }
+.agent_scope_ie .btn { font-size: 12px; line-height: 14px !important; }
+.agent_scope_ie .img_description { padding-top: 1px !important; }
+.agent_scope_ie a img { border: 0px !important; }
+.agent_scope_ie.ie7 .box { margin-right: 1px !important; }
+.agent_scope_ie.ie7 .main .news.box .article_contents UL LI { height: 19px !important; }
+.agent_scope_ie.ie7 .main .gallery.box .article_contents LI { margin-right: 19px !important; }
+.agent_scope_ie .remember_id { background-color: white !important; }
+
+/******************************** 파이어폭스
+********************************/
+/******************************** 크롬
+********************************/
+/********************************
+	사파리
+********************************/

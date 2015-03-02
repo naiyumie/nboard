@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import
+	"_library.scss"
+;
+/********************************
+    인터넷 익스플로러
+********************************/
+	.agent_scope_ie{
+		.article_contents{
+			li a{
+				font-size:12px;
+				line-height:14px !important;
+			}
+		}
+		.popup-navi{
+			li a{
+				line-height:19px !important;
+			}
+		}
+		.main .popupzone.box .in .btn-control{
+			top:17px !important;
+		}
+		.btn{
+			font-size:12px;
+			line-height:14px !important;
+		}
+		.img_description{
+			padding-top:1px !important;
+		}
+		a img{
+			border:0px !important;
+		}
+
+		&.ie7{
+			.box{
+				margin-right:1px !important;
+			}
+			.main .news.box .article_contents UL LI{
+				height:19px !important;
+			}
+			.main .gallery.box .article_contents LI{
+				margin-right:19px !important;
+			}
+
+		}
+		.remember_id{
+			background-color:white !important;
+		}
+	}
+
+
+/********************************
+    파이어폭스
+********************************/
+	.agent_scope_firefox{
+	}
+
+
+/********************************
+    크롬
+********************************/
+	.agent_scope_chrome{
+	}
+
+
+/********************************
+	사파리
+********************************/
+	.agent_scope_safari{
+	}

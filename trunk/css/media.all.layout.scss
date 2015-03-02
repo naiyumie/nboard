@@ -1,0 +1,2473 @@
+@charset "UTF-8";
+@import
+	"_library.scss"
+;
+/**************************************************************************************************
+
+	접근성 스킵메뉴
+
+**************************************************************************************************/
+	dl.shortCut {
+		height: 0;
+		left: 0;
+		top: 0;
+		position: absolute;
+		width: 100%;
+		z-index: 99999;
+		margin: 0;
+		padding: 0;
+		dt {
+			height: 0;
+		}
+		dd {
+			height: 0;
+			a {
+				color: #000;
+				display: block;
+				font-size: 14px;
+				position: absolute;
+				text-align: center;
+				white-space: nowrap;
+				height: 1px;
+				width: 1px;
+				left: 0;
+				top: 0;
+				margin-bottom: -1px;
+				margin-left: -1px;
+				overflow: hidden;
+				&:focus, &:hover, &:active {
+					background: #1c1718;
+					color: #b29a90;
+					height: auto;
+					padding: 10px 30px;
+					left: 3px;
+					top: 13px;
+					width: auto;
+					z-index: 1000;
+					border: 1px solid #c5a96a;
+				}
+			}
+		}
+	}
+
+
+
+
+/**************************************************************************************************
+
+    멀티 클래스
+
+**************************************************************************************************/
+	.blind{
+		display:block;
+		position:absolute;
+		left:-9999px;
+		width:1px;
+		height:1px;
+		line-height:0;
+		overflow:hidden;
+		font-size:0;
+		text-indent:-9999px;
+	}
+	.clear{
+		clear:both;
+		width:100%;
+		height:0px;
+		border:none;
+	}
+
+
+
+/**************************************************************************************************
+
+    html and body
+
+**************************************************************************************************/
+	html{
+		@include mp0();
+	}
+	body{
+		@include mp0();
+		background-color:#f8f8f8;
+	}
+
+	/********************************
+	    html selection
+	********************************/
+	$s_background : #372d2a;
+	$s_color : white;
+	$text-shadow : none;
+	::selection { background:$s_background; color:$s_color; text-shadow:$text-shadow; }
+	::-moz-selection { background:$s_background; color:$s_color; text-shadow:$text-shadow; }
+	::-webkit-selection { background:$s_background; color:$s_color; text-shadow:$text-shadow; }
+
+
+
+
+/**************************************************************************************************
+
+    전역 변수
+
+**************************************************************************************************/
+	$ffamily : '돋움','dotum';
+	$ffamily2 : '굴림','gulim';
+	$ffamily3 : 'tahoma','dotum','verdana';
+	$red : #cb1111;
+	$blue : #0072bc;
+	$green : #3cb878;
+
+
+
+
+/**************************************************************************************************
+
+	header & footer & layouts (wrapper)
+
+**************************************************************************************************/
+	.header{
+		@include bglt(bg($bg :'headerbg.png'), 0px, 0px, repeat-x);
+		@include wh(100%,63px);
+		.in{
+			min-width:1000px;
+			width:1000px;
+			@include mp0();
+			@include center();
+			height:56px;
+			position:relative;
+			background-color:#1c1718;
+			.logowrap{
+				@include mp0();
+				display:block;
+				position:absolute;
+				top:0px;left:10px;
+				height:0px;
+				a{
+					@include mp0();
+					height:0px;
+					display:block;
+					padding: 24px 0px;
+					.logo{
+						@include mp0();
+						display:block;
+					}
+				}
+			}
+			.gnb{
+				width:100%;
+				@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+				ul{
+					@include mp(0px,0px,0px,0px, 22px,0px,0px,293px);
+					li{
+						@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+						float:left;
+						list-style:none;
+						height:36px;
+						&.active{
+							@include bglt(bg($bg:'gnb_active.png'), center,bottom,no-repeat);
+							a{
+								color:white;
+							}
+						}
+						a{
+							color:white;
+							@include mp(0px,0px,0px,0px, 0px,25px,0px,25px);
+							font-size:16px;
+							color:#b29a90;
+							font-family:$ffamily;
+							text-decoration:none;
+							display:block;
+							&:hover{
+								color:#f0f0f0;
+							}
+
+						}
+					}
+				}
+			}
+		}
+	}
+	.footer{
+		@include bglt(bg($bg:'footerbg.png'), 0px,0px,repeat-x);
+		@include wh(100%,59px);
+		clear:both;
+		background-color:#372d2a;
+		overflow:hidden;
+		.in{
+			min-width:1000px;
+			width:1000px;
+			@include mp0();
+			@include center();
+			height:100%;
+			position:relative;
+			.logowrap{
+				@include mp0();
+				display:block;
+				position:absolute;
+				top: 4px;
+				left: 0px;
+				height:0px;
+				a{
+					@include mp0();
+					height:0px;
+					display:block;
+					.logo{
+						@include mp0();
+						display:block;
+					}
+				}
+			}
+			.copyright{
+				color:#b29a90;
+				font-family:$ffamily;
+				font-size:12px;
+				@include mp(0px,0px,0px,0px, 19px,0px,0px,231px);
+				line-height:1;
+				line-height:13px;
+				letter-spacing:-0.45px;
+				.mailto{
+					text-decoration:none;
+					color:#b29a90;
+				}
+				.copyright_separation{
+					color:#604b42;
+					display:inline-block;
+					padding:5px;
+					@include bglt(bg($bg :'copyright_separation.png'), center, center, no-repeat);
+				}
+				.produced{
+					font-size:11px;
+				}
+			}
+		}
+	}
+	.wrapper{
+		min-width:1000px;
+		width:1000px;
+		@include center();
+		.main{
+			min-height: 828px;
+		}
+		.sub{
+			.sidebar{
+				width:200px;
+				float:left;
+				height:100%;
+			}
+			.content_wrap{
+				min-height:500px;
+				width:760px;
+				float:right;
+				padding-left:40px;
+				padding-bottom: 40px;
+			}
+			.content_wrap2{
+				width:100%;
+				.inwrap{
+					width:100%;
+					height:100%;
+				}
+				.in_tbl{
+					display:table;
+					width:100%;
+					height:500px;
+					vertical-align:middle;
+					.in_tr{
+						display:table-row;
+						width:100%;
+						height:100%;
+						.in_td{
+							display:table-cell;
+							width:100%;
+							height:100%;
+							vertical-align:middle;
+							.in_container{
+								width:656px;
+								margin:0 auto;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.frame_wrapper{
+		padding:10px;
+		padding-top:20px;
+	}
+
+
+
+/**************************************************************************************************
+
+    메인
+
+**************************************************************************************************/
+	@mixin box_head(){
+		@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+		color:#533f34;
+		font-size:16px;
+		font-weight:bold;
+		font-family:$ffamily;
+		position:absolute;
+		top: 18px;
+		left: 18px;
+	}
+	.main{
+		margin-top: -1px;
+		.keyvisual{
+			@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+			height:354px;
+			position: relative;
+			overflow:hidden;
+			.visual-navi{
+				position:absolute;
+				z-index:10;
+				min-width:400px;
+				width:400px;
+				left: 428px;
+				bottom: 6px;
+				.anchor{
+					float:left;
+					a{
+						display:block;
+						width:100%;
+						height:100%;
+						text-indent:-9999em;
+					}
+					&.anchor-prev, &.anchor-next{
+						width:11px;
+						height:11px;
+					}
+					&.anchor-prev{
+						margin-right:3px;
+						.btn-prev{
+							@include bglt(bg($bg :'keyvisual_lt_arraow.png'), 0px, 0px, no-repeat);
+							&.hover{
+								@include bglt(bg($bg :'keyvisual_lt_arraow_active.png'), 0px, 0px, no-repeat);
+							}
+						}
+					}
+					&.anchor-next{
+						margin-left:3px;
+						.btn-next{
+							@include bglt(bg($bg :'keyvisual_rt_arraow.png'), 0px, 0px, no-repeat);
+							&.hover{
+								@include bglt(bg($bg :'keyvisual_rt_arraow_active.png'), 0px, 0px, no-repeat);
+							}
+						}
+					}
+				}
+				.navi{
+					li{
+						float:left;
+						a{
+							text-indent:-999em;
+							width:11px;
+							height:11px;
+							display:block;
+							margin-left:2px;
+							margin-right:2px;
+							@include bglt(bg($bg :'keyvisual_nav_controlitem.png'), 0px, 0px, no-repeat);
+							&.flex-active{
+								width:28px;
+								@include bglt(bg($bg :'keyvisual_nav_controlitem_factive.png'), 0px, 0px, no-repeat);
+							}
+						}
+					}
+				}
+				ul{
+					@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+					li{
+						@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+						list-style:none;
+					}
+				}
+			}
+			.visual-wrap{
+				@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+				overflow:hidden;
+				.slides{
+					@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+					.keyvisual_images{
+						@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+						list-style:none;
+						position: relative;
+
+						.slogan{
+							position:absolute;
+							top:0px;
+							left:0px;
+							&.slogan0{
+								top: 59px;
+								left: 41px;
+							}
+							&.slogan1{
+								top: 58px;
+								left: 39px;
+							}
+							&.slogan2{
+								top: 60px;
+								left: 39px;
+							}
+						}
+						.descript{
+							font-family:$ffamily;
+							color:white;
+							font-size:18px;
+							@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+							position:absolute;
+							top:100px;
+							left:10px;
+							&.descript0{
+								top: 211px;
+								left: 40px;
+							}
+							&.descript1{
+								top: 160px;
+								left: 40px;
+								color:#0190bf;
+							}
+							&.descript2{
+								top: 211px;
+								left: 40px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.box{
+			width:328px;
+			height:224px;
+			float:left;
+			background-color:white;
+			border:1px solid #dfdfdf;
+			@include borderbox();
+			position:relative;
+			h2{
+				@include box_head();
+			}
+			a{
+				text-decoration: none;
+			}
+			&.recent, &.news, &.gallery{
+				@include mp(9px,7px,0px,0px, 0px,0px,0px,0px);
+				.tab{
+					@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+					top: 53px;
+					left: 15px;
+					position: absolute;
+					display:block;
+					padding-left:10px;
+					color:#666666;
+					font-size:12px;
+					font-weight:normal;
+					font-family:$ffamily;
+					text-decoration:none;
+					padding-right: 12px;
+					@include bglt(bg($bg:'article_sep.png'), right,1px,no-repeat);
+					&.tab01{
+						left:15px;
+					}
+					&.tab02{
+						left:61px;
+					}
+					&.tab03{
+						left:131px;
+						background-image:none;
+						&.tab_b{
+							left:107px;
+						}
+					}
+					&.active{
+						color:#533f34;
+					}
+					ul{
+						@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+						li{
+							@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+							list-style:none;
+							float:left;
+							&.active{
+								a{
+									color:#533f34;
+								}
+							}
+
+						}
+					}
+				}
+				.article_contents{
+					@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+					position:absolute;
+					top: 86px;
+					left:24px;
+					ul{
+						@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+						li{
+							@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+							list-style:none;
+							width:276px;
+							@include bglt(bg($bg :'bullets01.png'), 0px, 5px, no-repeat);
+							padding-left:9px;
+							height:21px;
+							line-height: 1;
+							a{
+								@include ellipse();
+								color:#353535;
+								font-size:12px;
+								font-weight:normal;
+								font-family:$ffamily;
+								text-decoration:none;
+								display: inline-block;
+								@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+								line-height:1;
+								width: 203px;
+								float:left;
+								&:hover{
+									text-decoration:underline;
+								}
+							}
+							.nodata{
+								color:#353535;
+								font-size:12px;
+								font-weight:normal;
+								font-family:$ffamily;
+								text-decoration:none;
+								display: inline-block;
+								@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+								line-height:1;
+								width: 213px;
+								float:left;
+							}
+							.datetimes{
+								color:#979797;
+								font-size:12px;
+								font-weight:normal;
+								font-family:$ffamily;
+								text-decoration:none;
+								display: inline-block;
+								text-align:right;
+								@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+								line-height:1;
+								width: 60px;
+								letter-spacing:-0.35px;
+								font-size:11px;
+								float:right;
+							}
+						}
+					}
+				}
+				.article_more{
+					@include bglt(bg($bg :'article_more.png'), 0px, 0px, no-repeat);
+					width:16px;
+					height:16px;
+					position:absolute;
+					top:19px;
+					right:19px;
+					text-indent:-999em;
+				}
+			}
+
+			&.gallery{
+				margin-top:8px;
+				height:214px;
+				width:663px;
+				margin-right:9px;
+				.nodata{
+					position:absolute;
+					font-family: $ffamily;
+					font-size: 11px;
+					color: #666666;
+					line-height: 17px;
+					display: inline-block;
+					text-align: center;
+					margin: 0;
+					padding: 0;
+					overflow: hidden;
+					margin-left: 2px;
+					text-decoration:none;
+					top: 50%;
+					left: 0;
+					margin-top: -12px;
+					width: 100%;
+					text-align: center;
+
+				}
+				.article_contents{
+					@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+					top:auto;
+					left:auto;
+					float:left;
+					li{
+						@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+						width:138px;
+						height:149px;
+						position:relative;
+						margin-right:20px;
+						float:left;
+						margin-top: 48px;
+						list-style:none;
+						border:1px solid #ececec;
+						@include borderbox();
+						&:first-child{
+							margin-left:25px;
+						}
+						.imgcnt{
+							width:138px;
+							height:97px;
+							overflow:hidden;
+							position:absolute;
+							top:-1px;left:-1px;
+							img{
+								border:0;
+							}
+						}
+						.img_description{
+							@include mp0();
+							@include mp(4px,0px,0px,9px, 0px,0px,0px,0px);
+							position:absolute;
+							top:96px;
+							left:0px;
+							font-size:12px;
+							font-family:$ffamily;
+							color:#353535;
+							width: 122px;
+							height: 24px;
+							line-height: 1;
+							overflow: hidden;
+						}
+						.datetimes{
+							color: #979797;
+							font-size: 12px;
+							font-weight: normal;
+							font-family: "dotum";
+							text-decoration: none;
+							display: inline-block;
+							margin: 0px 0px 0px 0px;
+							padding: 0px 0px 0px 0px;
+							line-height: 1;
+							width: 70px;
+							letter-spacing: -0.35px;
+							font-size: 11px;
+							float: right;
+							text-align:right;
+							position:absolute;
+							bottom: 8px;
+							right: 4px;
+						}
+					}
+				}
+			}
+
+			&.popupzone{
+				background-color:transparent;
+				@include mp(8px ,0px,0px,0px, 0px,0px,0px,0px);
+				height:214px;
+				.in {
+					height: 100%;
+					position: relative;
+					h3{
+						top: 16px;
+						left: 20px;
+					}
+					.photocnt {
+						width: 326px;
+						height: 163px;
+						overflow: hidden;
+						position: absolute;
+						top: 49px;
+						left: 0;
+						margin: 0;
+						padding: 0;
+						ul {
+							list-style-type: none;
+							margin: 0;
+							padding: 0;
+						}
+						li.photo {
+							width: 326px;
+							height: 163px;
+							list-style-type: none;
+							float: left;
+							margin: 0;
+							padding: 0;
+							a {
+								border: none;
+								display: block;
+								margin: 0;
+								padding: 0;
+								img {
+									display: block;
+									margin: 0;
+									padding: 0;
+									width: 326px;
+									height: 163px;
+								}
+							}
+						}
+					}
+					.btn-control {
+						width: 34px;
+						height: 16px;
+						background-color: white;
+						position: absolute;
+						top: 17px;
+						right: 18px;
+						text-align: right;
+						list-style-type: none;
+						padding: 0;
+						margin: 0;
+						list-style: none;
+						overflow: visible;
+						line-height:1;
+
+						li {
+							list-style-type: none;
+							padding: 0;
+							margin: 0;
+							float: left;
+							width: 16px;
+							list-style: none;
+							&:first-child{
+								margin-right:2px;
+							}
+							a {
+								float:left;
+								padding: 0;
+								margin:0;
+								display: block;
+							}
+						}
+					}
+					.popup-navi {
+						position: absolute;
+						top: 17px;
+						right: 57px;
+						padding: 0;
+						margin: 0;
+						list-style: none;
+						overflow: hidden;
+						line-height:1;
+						li {
+							float: left;
+							padding: 0;
+							margin: 0;
+							a {
+								display: block;
+								padding: 0;
+							}
+						}
+					}
+					.nmb {
+						width: 16px;
+						height: 16px;
+						@include bglt(bg($bg :'popupzone_nmb_n.png'), 0px, 0px, no-repeat);
+						font-family: $ffamily;
+						font-size: 11px;
+						color: #666666;
+						line-height: 17px;
+						display: inline-block;
+						text-align: center;
+						margin: 0;
+						padding: 0;
+						overflow: hidden;
+						margin-left: 2px;
+						text-decoration:none;
+						@include borderbox();
+						&.active{
+							@include bglt(bg($bg :'popupzone_nmb_a.png'), 0px, 0px, no-repeat);
+							color:white;
+						}
+					}
+				}
+			}
+
+
+		}
+	}
+
+
+
+
+/**************************************************************************************************
+
+    사인인 & 사인 아웃
+
+**************************************************************************************************/
+	/********************************
+		싱글사인 이동
+	********************************/
+		.singlesign_go{
+			width:55px;
+			height:54px;
+			position:absolute;
+			right:15px;
+			top:3px;
+			text-indent:-999em;
+			@include bglt(bg($bg :'gnb_signin_btn.png'), 0px, 0px, no-repeat);
+			&:hover{
+				@include bglt(bg($bg :'gnb_signin_btn_active.png'), 0px, 0px, no-repeat);
+			}
+		}
+	/********************************
+		signin, signed 공통
+	********************************/
+		.signin, .signed{
+			width:328px;
+			height:224px;
+			float:left;
+			background-color:white;
+			border:1px solid #dfdfdf;
+			@include borderbox();
+			position:relative;
+			background-color:#372d2a;
+			background-image:url('../images/boxpattern.png');
+			background-repeat:repeat;
+			border-color:black;
+			@include mp(9px,0px,0px,2px, 0px,0px,0px,0px);
+			.in {
+				position:relative;
+				float:left;
+				width:100%;
+				height:100%;
+				h2{
+					color:#bc9c55;
+				}
+				.form{
+					width:100%;
+					position:relative;
+					.ffield {
+						display: block;
+						overflow: hidden;
+						position: absolute;
+						top:97px;
+						left:24px;
+						width: 282px;
+						height: 71px;
+						border:none;
+						@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+						input {
+							position: absolute;
+							height: 30px;
+							font-size: 16px;
+							line-height: 27px;
+							width: 191px;
+							height: 36px;
+							@include borderbox();
+							font-family:$ffamily;
+							line-height:1;
+							&.inp_id, &.inp_pw {
+								border: #bc9c55 solid;
+								border-width: 1px 1px 1px 1px;
+								padding-left:10px;
+							}
+							&.inp_id {
+							}
+							&.inp_pw {
+								top: 35px;
+							}
+							&.inp_btn {
+								width: 90px;
+								height: auto;
+								left: auto;
+								right:0px;
+								top:0px;
+								border:none;
+								@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+								font-size:14px;
+								color:#b29a90;
+								font-weight:normal;
+								padding-top:30px;
+								padding-bottom:30px;
+								background-color:#1c1718;
+								cursor:pointer;
+							}
+						}
+						.remember_id{
+							width:20px;
+							height:20px;
+							position:absolute;
+							right: 97px;
+							top:10px;
+							@include bglt(bg($bg :'remember_id.png'), 0px, 0px, no-repeat);
+							&.checked{
+								@include bglt(bg($bg :'remember_id_active.png'), 0px, 0px, no-repeat);
+							}
+							input{
+								width:20px;
+								height:20px;
+								margin: 0;
+								padding: 0;
+								opacity: 0;
+								cursor:pointer;
+							}
+						}
+					}
+				}
+				.sigin_auth_choose{
+					height: 13px;
+					position:absolute;
+					top:50px;
+					left:24px;
+					.nrdg{
+						height:13px;
+						width:69px;
+						float:left;
+						background:url('../images/nrdg_normal.png') left top no-repeat;
+						&.checked{
+							background:url('../images/nrdg_active.png') left top no-repeat;
+							label{
+								color:#bc9c55;
+							}
+						}
+						label{
+							float:left;
+							cursor:pointer;
+							text-indent:17px;
+							display:block;
+							color:white;
+							font-family:$ffamily;
+							font-size:12px;
+							line-height:1;
+							padding-top:2px;
+						}
+						input[type=radio]{
+							position:absolute;
+							left:1px;
+							top:-9999px;
+						}
+					}
+					.info {
+						font-size: 13px;
+						letter-spacing: -0.25px;
+						position:absolute;
+						left:0px;
+						line-height:1;
+						font-family:$ffamily;
+						color: white;
+						top:23px;
+						@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+						width:270px;
+					}
+				}
+
+				.find_and_new {
+					position:absolute;
+					bottom:31px;
+					right:20px;
+					width:309px;
+					font-family:$ffamily;
+					font-size:12px;
+					text-align:right;
+					letter-spacing:-0.7px;
+					a{
+						color:#fdf0f0;
+						text-decoration:none;
+						font-size:11px;
+					}
+					.sep{
+						font-size:10px;
+						color:#bc9c55;
+						padding-left:5px;
+						padding-right:5px;
+						display:inline-block;
+						&.dot{
+							padding-left:0px;
+							padding-right:0px;
+						}
+					}
+				}
+
+				.signin_failed{
+					@include mp0();
+					position:absolute;
+					top:-42px;
+					left:0px;
+					padding-left:62px;
+					padding-top:10px;
+					font-size:11px;
+					color:#1c1718;
+					letter-spacing:-0.5px;
+					width:500px;
+					font-family:$ffamily;
+					@include bglt(bg($bg :'signed_failed_logo.png'), 5px, 0px, no-repeat);
+					height:50px;
+				}
+			}
+		}
+		.tester{
+			position:absolute;
+			left: 0px;
+			bottom:0px;
+			padding: 10px;
+			font-size: 12px;
+			border:0;
+			color:white;
+			font-family:$ffamily;
+			padding-left:24px;
+		}
+	/********************************
+		사인인 되었을 경우
+	********************************/
+		.signed{
+			background-image:none;
+			border-color:#cdcdcd;
+			.in {
+				position:relative;
+				.basicauth {
+					width:236px;
+					height:35px;
+					position:absolute;
+					top:16px;
+					left:20px;
+					@include mp0();
+					line-height:1;
+					.signed_id {
+						@include mp0();
+						color:#1c1718;
+						font-size:12px;
+						font-family:$ffamily2;
+						font-weight:bold;
+						line-height:1;
+						letter-spacing:2px;
+						display: inline-block;
+						width:100%;
+						.suffix {
+							@include mp0();
+							color:#565656;
+							font-size:11px;
+							letter-spacing:-0.45px;
+							font-family:$ffamily;
+							font-weight:bold;
+							line-height:1;
+							padding-left:0px;
+						}
+					}
+					.auth {
+						@include mp0();
+						font-family:$ffamily;
+						font-weight:normal;
+						line-height:1;
+						color:#565656;
+						font-size:12px;
+						display: inline-block;
+						padding-top: 11px;
+						width:100%;
+						.level {
+							@include mp0();
+							font-family:$ffamily;
+							font-weight:normal;
+							line-height:1;
+							color:#565656;
+							font-size:10px;
+							padding-left:5px;
+						}
+					}
+				}
+				.biography {
+					@include mp0();
+					width:236px;
+					height:35px;
+					position:absolute;
+					top:60px;
+					left:20px;
+					line-height:1;
+					.title{
+						font-family:$ffamily3;
+						font-size:11px;
+						color:#666;
+						line-height:1;
+						width:50%;
+						display:inline-block;
+						clear:left;
+					}
+					.dates{
+						@include mp0();
+							font-family:$ffamily;
+							font-weight:normal;
+							line-height:1;
+							color:#a0a0a0;
+							font-size:11px;
+							padding-left:5px;
+					}
+					.bio_since .dates {
+						@include mp0();
+						padding-left:12px;
+					}
+				}
+				.sep {
+					@include mp0();
+					border-style:solid;
+					border-color:#e7e7e7;
+					border-width:1px 0 0 0;
+					width:287px;
+					position:absolute;
+					left:19px;
+					&.sep1{
+						top:97px;
+					}
+					&.sep2{
+						top:158px;
+					}
+				}
+				.article_active_history{
+					@include mp0();
+					width:288px;
+					height:35px;
+					position:absolute;
+					top:108px;
+					left:20px;
+					line-height:1;
+					li{
+						@include mp0();
+						list-style:none;
+						line-height:1;
+						float:left;
+						height:15px;
+						width:100%;
+						@include bglt(bg($bg :'disicns2.png'), 0px, 0px, no-repeat);
+						&:first-child{
+							@include bglt(bg($bg :'disicns1.png'), 0px, 0px, no-repeat);
+						}
+						&:last-child{
+							@include bglt(bg($bg :'disicns3.png'), 0px, 0px, no-repeat);
+						}
+						.title {
+							font-family:$ffamily;
+							font-size:11px;
+							color:#a0a0a0;
+							line-height:1;
+							width:40%;
+							float:left;
+							padding-left:15px;
+						}
+						.num{
+							font-family:$ffamily;
+							font-size:11px;
+							color:#666666;
+							line-height:1;
+							width:48%;
+							display:inline-block;
+							float:right;
+							text-align:right;
+							.suffix {
+								font-size:11px;
+								color:#a3a3a3;
+								line-height:1;
+							}
+
+						}
+					}
+				}
+				.change_myinfo {
+					@include mp0();
+					position:absolute;
+					right: 17px;
+					top: 17px;
+					font-family:$ffamily;
+					font-size:11px;
+					color:#a0a0a0;
+					line-height:1;
+					text-decoration:none;
+				}
+				.go_admin{
+					@include mp0();
+					position:absolute;
+					left: 17px;
+					bottom: 24px;
+					font-family:$ffamily;
+					font-size:11px;
+					color:#a0a0a0;
+					line-height:1;
+					text-decoration:none;
+				}
+			}
+		}
+
+
+/**************************************************************************************************
+
+    서브
+
+**************************************************************************************************/
+	.sub{
+
+		/********************************
+			aside - signed
+		********************************/
+			.box{
+				width:328px;
+				height:224px;
+				float:left;
+				background-color:white;
+				border:1px solid #dfdfdf;
+				@include borderbox();
+				position:relative;
+				h3{
+					@include box_head();
+					color: #bc9c55;
+				}
+
+				&.signed, &.unsigned{
+					float:none;
+					@include mp(20px,0px,20px,0px, 0px,0px,0px,0px);
+					border:none;
+					width:200px;
+					height: 203px;
+					background-color:transparent;
+					border-bottom:1px solid #dfdfdf;
+					.in{
+						.basicauth{
+							left:9px;
+							top: 18px;
+							width:190px;
+						}
+						.biography{
+							left:9px;
+							top:62px;
+							width:190px;
+						}
+						.sep{
+							width: 180px;
+							left: 10px;
+							&.sep1{
+								top: 99px;
+							}
+							&.sep2{
+								top: 160px;
+							}
+						}
+						.article_active_history{
+							left:9px;
+							top:110px;
+							width:184px;
+						}
+						.change_myinfo {
+							right: 7px;
+						}
+						.btn.btn3{
+							bottom: 11px;
+							right: 9px;
+						}
+						.go_admin{
+							bottom:14px;
+						}
+					}
+				}
+
+				&.unsigned{
+					border-width:1px 1px 1px 1px;
+					border-style:solid;
+					border-color:#dfdfdf;
+					@include bglt(bg($bg :'unsigned_logo.png'), center, 30px, no-repeat);
+				}
+			}
+
+
+		/********************************
+			aside - h2
+		********************************/
+			h2{
+				@include mp(0px,0px,0px,0px, 20px,0px,20px,20px);
+				color:#bc9c55;
+				background-color:#372d2a;
+				background-image:url('../images/boxpattern.png');
+				background-repeat:repeat;
+				font-size:16px;
+				line-height:1;
+				font-family:$ffamily;
+			}
+
+		/********************************
+			aside - lnb
+		********************************/
+			.lnb{
+				@include mp0();
+				line-height:1;
+				ul{
+					@include mp0();
+					line-height:1;
+					border-bottom:1px solid #29221f;
+					li{
+						@include mp0();
+						@include mp(0px,0px,0px,0px, 12px,0px,13px,31px);
+						@include bglt(bg($bg :'lnb_bullets_n.png'), 14px, 16px, no-repeat);
+						list-style-type:none;
+						background-color:white;
+						border-bottom:1px solid #dfdfdf;
+						line-height:12px;
+						&.active{
+							@include bglt(bg($bg:'lnb_bullets_a.png'), 14px, 16px, no-repeat);
+							a{
+								color:#1c1718;
+							}
+						}
+						a{
+							@include mp0();
+							@include typo(normal,14px,1,#666666,-0.5px,0px);
+							text-decoration:none;
+							font-family:$ffamily;
+							display: inline-block;
+							line-height:12px;
+							&:hover{
+								color:#1c1718;
+							}
+						}
+						&:last-child{
+							border-bottom:0px;
+						}
+					}
+				}
+			}
+
+		/********************************
+			sub - singlesign
+		********************************/
+			.box{
+				&.signin{
+					border:none;
+					@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+					background-color:#372d2a;
+					border-width:1px 0px 1px 1px;
+					border-style:solid;
+					border-color:black;
+					@include borderbox();
+
+				}
+				&.signin_ad{
+					border:none;
+					background-color:#372d2a;
+					background-image:url('../images/boxpattern.png');
+					padding-top:36px;
+					padding-left:55px;
+					border-width:1px 1px 1px 0px;
+					border-style:solid;
+					border-color:black;
+					@include borderbox();
+
+				}
+			}
+
+		/********************************
+			소개
+		********************************/
+			.content_wrap{
+				h3{
+					font-size:16px;color:#1c1718;
+					font-weight:bold;
+					font-family:$ffamily;
+					@include mp(0px,0px,0px,0px, 30px,0px,10px,0px);
+					border-bottom:4px solid #c5a86a;
+					line-height:16px;
+				}
+				img{
+					margin:0 auto;
+					padding-top:40px;
+					padding-bottom:20px;
+					display: block;
+				}
+				h4{
+					font-size:14px;color:#603913;
+					font-weight:bold;
+					font-family:$ffamily;
+					@include mp(0px,0px,0px,0px, 30px,0px,0px,0px);
+				}
+				h5{
+					font-size:14px;color:#603913;
+					font-weight:normal;
+					font-family:$ffamily;
+					@include mp(0px,0px,0px,0px, 30px,0px,0px,0px);
+				}
+				p{
+					font-size:14px;color:#1c1718;
+					font-weight:normal;
+					font-family:$ffamily;
+					@include mp(0px,0px,0px,0px, 10px,0px,0px,0px);
+					line-height:22px;
+					span.ln{
+						display:inline-block;width:100%;
+					}
+				}
+				ol{
+					list-style:none;
+					margin:0;
+					padding:0;
+					li{
+						list-style:none;
+						margin:0;
+						padding:0;
+						font-family:$ffamily;
+						line-height:22px;
+						padding-left:70px;
+						.num{
+							float:left;margin-left:-70px;
+						}
+					}
+				}
+			}
+
+		/********************************
+			멤버 조인
+		********************************/
+			.content_wrap{
+				.member_join_phase{
+					width:635px;height:130px;margin:40px auto 30px auto;text-indent:-9999em;overflow:hidden;
+					&.phase1{
+						@include bglt(bg($bg :'member_join_phase_1.png'), 0px, 0px, no-repeat);
+					}
+					&.phase2{
+						@include bglt(bg($bg :'member_join_phase_2.png'), 0px, 0px, no-repeat);
+					}
+					&.phase3{
+						@include bglt(bg($bg :'member_join_phase_3.png'), 0px, 0px, no-repeat);
+					}
+					&.phase4{
+						@include bglt(bg($bg :'member_join_phase_4.png'), 0px, 0px, no-repeat);
+					}
+				}
+			}
+	}
+
+
+
+
+/**************************************************************************************************
+
+    공통
+
+**************************************************************************************************/
+	/********************************
+		버튼 공통
+	********************************/
+		.btn{
+			@include mp(0px,0px,0px,0px, 9px,0px,9px,0px);
+			font-family:$ffamily;
+			color:white;
+			font-size:12px;
+			text-decoration:none;
+			letter-spacing:-0.75px;
+			line-height: 1;
+			@include bglt(bg($bg :'button_bullet_arrow.png'), 11px, 13px, no-repeat);
+			display:block;
+			border:none;
+			border-color:transparent;
+			cursor:pointer;
+			&.btn0{
+				position:absolute;
+				top:248px;
+				left: 40px;
+				background-color:#1c1718;
+				padding-left:29px;
+				padding-right:20px;
+			}
+			&.btn1{
+				position:absolute;
+				top:198px;
+				left: 40px;
+				background-color:#0190bf;
+				padding-left:29px;
+				padding-right:20px;
+			}
+			&.btn2{
+				position:absolute;
+				top:250px;
+				left: 40px;
+				background-color:#492012;
+				padding-left:29px;
+				padding-right:20px;
+			}
+			&.btn3{
+				position:absolute;
+				bottom:20px;
+				right:20px;
+				background-color:#1c1718;
+				color:#fdf0f0;
+				background-position:4px 7px;
+				@include mp(0px,0px,0px,0px, 4px,14px,4px,14px);
+				font-size:12px;
+			}
+			&.btn4{
+				display:inline-block;
+				background-color:#1c1718;
+				color:#fdf0f0;
+				background-position:4px 7px;
+				@include mp(0px,0px,0px,0px, 4px,14px,4px,14px);
+				font-size:12px;
+			}
+			&.btn5{
+				display:inline-block;
+				background-color:#372d2a;
+				color:#fdf0f0;
+				background-position:4px 7px;
+				@include mp(0px,0px,0px,0px, 4px,14px,4px,14px);
+				font-size:11px;
+			}
+			&.btn6{
+				display:inline-block;
+				background-color:transparent;
+				color:#666666;
+				background-position:4px 7px;
+				@include mp(0px,0px,0px,0px, 4px,14px,4px,14px);
+				font-size:11px;
+				border:1px solid #dfdfdf;
+				@include borderbox();
+			}
+			&.btn7{
+				position:absolute;
+				top:11px;
+				right:10px;
+				background-color:#1c1718;
+				color:#b29a90;
+				background-image:none;
+				@include mp(0px,0px,0px,0px, 29px,31px,29px,31px);
+				font-size:12px;
+				line-height:1;
+
+			}
+		}
+	/********************************
+		디스플레이 공통
+	********************************/
+		// 디스플레이용 텍스트 박스
+		.textbox1{
+			border-width:1px 1px 1px 1px;
+			border-color:#dfdfdf;
+			border-style:solid;
+			@include mp(0px,0px,0px,0px, 10px,10px,10px,10px);
+			overflow:hidden;overflow-y:scroll;
+			background-color:white;
+			min-height:50px;
+			height:50px;
+			letter-spacing:-0.50px;
+			line-height:1;
+		}
+
+		// 디스플레이 테이블
+		.dtbl{
+			display:table;
+			.dtr{
+				display:table-row;
+				.dtd{
+					display:table-cell;
+				}
+			}
+		}
+
+		// pre 텍스트 공통
+		.pretext{
+			margin:0;
+			padding:0;
+			line-height:18px;
+		}
+
+	/********************************
+		폼 공통
+	********************************/
+		// 필수 입력 항목의 *
+		.required{
+			color:red;
+			font-size:12px;
+			font-family:$ffamily2;
+			float:left;
+			margin-left:-13px;
+		}
+
+		// input[type=text]
+		.text1{
+			border-width:1px;
+			border-color:#dfdfdf;
+			border-style:solid;
+			text-indent:5px;
+			color:#666668;
+			font-family:$ffamily;
+			font-size:12px;
+			line-height:1;
+			display: inline-block;
+			width:100%;
+			@include mp(0px,0px,0px,0px, 4px,0px,1px,0px);
+			&.s{
+				width:50px;
+			}
+			&.m{
+				width:100px;
+			}
+			&.l{
+				width:200px;
+			}
+			&.xl{
+				width:400px;
+			}
+		}
+
+		// textarea
+		.textarea1{
+			border-width:1px;
+			border-color:#dfdfdf;
+			border-style:solid;
+			color:#666668;
+			font-family:$ffamily;
+			font-size:12px;
+			line-height:1;
+			padding:5px;
+			display: inline-block;
+			resize:none;
+			width:616px;
+			height:3em;
+			&.s{
+				width:50px;
+			}
+			&.m{
+				width:100px;
+			}
+			&.l{
+				width:200px;
+			}
+			&.xl{
+				width:400px;
+			}
+		}
+
+		// 텍스트 필드 우측의 밸리데이션 영역
+		.validator{
+			color:#666666;
+			font-family:$ffamily;
+			font-size:11px;
+			line-height:1;
+			padding-top:2px;
+			display: inline-block;
+			padding-left:10px;
+			letter-spacing:-0.5px;
+			.fail{
+				color:$red;
+
+			}
+		}
+
+		// 래디오 그룹
+		.radiogroup{
+			width:auto;
+			height:15px;
+			display:inline-block;
+			padding-right:10px;
+			@include bglt(bg($bg :'radio1n.png'), 0px, 0px, no-repeat);
+			&.checked{
+				@include bglt(bg($bg:'radio1a.png'), 0px,0px,no-repeat);
+				label{
+					color:#666668;
+				}
+			}
+			label{
+				float:left;
+				cursor:pointer;
+				text-indent:17px;
+				display:block;
+				color:#999;
+				font-family:$ffamily;
+				font-size:12px;
+				line-height:1;
+				padding-top:2px;
+			}
+			input[type=radio]{
+				position:absolute;
+				left:1px;
+				top:-9999px;
+			}
+		}
+
+		// 체크 박스 그룹
+		.checkbox{
+			width:auto;
+			height:15px;
+			display:inline-block;
+			padding-right:10px;
+			@include bglt(bg($bg :'checkbox1n.png'), 0px, 0px, no-repeat);
+			&.checked{
+				@include bglt(bg($bg :'checkbox1a.png'), 0px, 0px, no-repeat);
+				label{
+					color:#666668;
+				}
+			}
+			input{
+				width:15px;
+				height:15px;
+				margin:0;
+				padding:0;
+				opacity:0;
+				cursor:pointer;
+			}
+			label{
+				float:left;
+				cursor:pointer;
+				text-indent:17px;
+				display:block;
+				color:#999;
+				font-family:$ffamily;
+				font-size:12px;
+				line-height:1;
+				padding-top:2px;
+			}
+		}
+
+		// 폼 상단 텍스트
+		.subcription1{
+			@include mp(10px,0px,0px,0px, 8px,8px,8px,8px);
+			color:#666;
+			font-size:11px;
+			font-family:$ffamily;
+			letter-spacing:-0.50px;
+			text-align:left;
+			line-height:1;
+			strong{
+				font-weight:bold;
+				font-size:12px;
+				line-height:1;
+				color:#372d2a;
+			}
+			&.separation{
+				border-bottom:1px solid #dfdfdf;
+			}
+		}
+
+		// subcription1 부분에 required
+		.required_text{
+			color:red;
+			font-size:12px;
+		}
+
+		// 폼 랩퍼와 테이블 기본 스타일.
+		.formstyle{
+			border-width:2px 0 2px 0;
+			border-color:#372d2a;
+			border-style:solid;
+			table{
+				table-layout:fixed;
+				width:100%;
+				border-spacing:0px;
+				border:0;
+				border-collapse:collapse;
+				@include mp0();
+				tr{
+					@include mp0();
+					&.section{
+						th,td{
+							border-bottom:1px solid #dfdfdf;
+						}
+					}
+					th, td{
+						@include mp0();
+						line-height:1;
+
+					}
+					th{
+						text-align:left;
+						color:#372d2a;
+						font-size:12px;
+						font-weight:bold;
+						font-family:$ffamily;
+						letter-spacing:-0.50px;
+						@include mp(0px,0px,0px,0px, 4px,0px,4px,20px);
+						&.single_th{
+							@include mp(0px,0px,0px,0px, 10px,0px,10px,20px);
+						}
+					}
+					td{
+						@include mp(0px,0px,0px,0px, 5px,0px,5px,20px);
+						color:#666;
+						font-size:12px;
+						font-family:$ffamily;
+						letter-spacing:-0.50px;
+						margin:0;
+						&.captcha{
+							img{
+								text-align:left;
+								margin:0;
+								padding:0;
+								padding:5px,0px,5px,20px;
+								display:inline-block;
+								vertical-align:middle;
+							}
+						}
+						// 글을 출력하고 폼 컨트롤을 포함하지 않을 경우
+						&.read{
+							@include mp(0px,0px,0px,0px, 10px,0px,10px,20px);
+						}
+						// 텍스트를 여러라인 출력 할 경우.
+						&.textline{
+							line-height:20px;
+						}
+						// 데스크립션
+						&.descript{
+							font-size:11px;
+							color:#666;
+							@include mp(0px,0px,0px,0px, 11px,0px,20px,20px);
+							.descript_p{
+								line-height:14px;
+								font-size:11px;
+								color:#666;
+							}
+						}
+						&.right{
+							text-align:right;
+						}
+						// 체크박스와 래디오가 있을때 사용.
+						&.with_chekbox_radio{
+							padding-top:8px;
+						}
+					}
+				}
+			}
+		}
+
+		// 게시판 유형의 랩퍼와 테이블 기본 스타일.
+		.boardstyle{
+			@extend .formstyle;
+			&.list, &.retrieve, &.write_and_update{
+				table{
+					tr{
+						th, td{
+							padding-left:0px;
+							padding-top:9px;
+							padding-bottom:9px;
+						}
+						th{
+						}
+						td{
+							text-align:center;
+						}
+					}
+					thead{
+						tr{
+							th{
+								text-align:center;
+							}
+							td{
+							}
+						}
+					}
+					tbody{
+						tr{
+							th{
+							}
+							td{
+								&.left{
+									text-align:left;
+								}
+								*.right{
+									text-align:right;
+								}
+								line-height:14px;
+								a{
+									color:#666666;
+									text-decoration:none;
+									text-align:left;
+									width:100%;
+									display:inline-block;
+									line-height:14px;
+									@include ellipsis();
+									&:hover{
+										text-decoration:underline;
+									}
+									.comment{
+										color:#bc9c55;
+										font-size:11px;
+										font-weight:normal;
+										font-family:$ffamily3;
+										strong{
+											font-weight:bold;
+										}
+									}
+								}
+								p{
+									font-size:12px;
+									line-height:20px;
+									letter-spacing: 0;
+								}
+								img{
+									margin:0;
+									padding:0;
+									display:inline-block;
+								}
+								.notice_num{
+									display: inline-block;
+									font-size: 11px;
+									background-color: #C5A86A;
+									padding: 2px;
+									border-radius: 3px;
+									border: 1px solid #a68949;
+									color: white;
+									line-height: 1;
+								}
+							}
+						}
+					}
+				}
+			}
+			&.retrieve{
+				table{
+					tr{
+						td, th{
+								text-align:left;
+						}
+					}
+				}
+				tbody{
+					tr{
+						td{
+							padding-left:20px;
+							&.title{
+								font-weight:bold;
+								color:#333333;
+							}
+							&.datetimes{
+								text-align:right;
+								color:#a0a0a0;
+							}
+							&.writer, &.hits{
+								color:#a0a0a0;
+								font-size:12px;
+								.writer_nick{
+									color:#666666;
+								}
+								.writer_id{
+									color:#a0a0a0;
+								}
+								.recommendation_num, .hits_num{
+									color:#666666;
+								}
+								.recommendation_num_data, .hits_num_data{
+									color:#666666;
+									padding-right:5px;
+									font-size:11px;
+									letter-spacing:0px;
+								}
+							}
+							&.hits{
+								text-align:right;
+							}
+
+							&.content{
+								line-height:20px;
+								@include mp(0px,0px,0px,0px, 20px,20px,40px,20px);
+							}
+						}
+					}
+				}
+			}
+
+			.comment_article{
+				padding:20px;
+				padding-bottom:0px;
+				position:relative;
+				border-bottom:1px solid #e7e7e7;
+				.commenter{
+					strong{
+						color:#666666;
+						font-weight:bold;
+						font-family:$ffamily;
+						font-size:12px;
+						span{
+							color:#a0a0a0;
+							font-weight:normal;
+							font-family:$ffamily;
+							font-size:11px;
+						}
+					}
+					span{
+						color:#a0a0a0;
+						font-weight:normal;
+						font-family:$ffamily;
+						font-size:11px;
+					}
+					a{
+						color:#a0a0a0;
+						font-weight:normal;
+						font-family:$ffamily;
+						font-size:11px;
+						text-decoration:none;
+						@include bglt(bg($bg :'comment_comment_icon.png'), 0px, 3px, no-repeat);
+						padding-left:10px;
+						display:inline-block;
+						&:hover{
+							text-decoration:underline;
+						}
+					}
+				}
+				.reaction{
+					position:absolute;
+					top:10px;
+					right:10px;
+					a{
+						color:#a0a0a0;
+						font-weight:normal;
+						font-family:$ffamily;
+						font-size:11px;
+						text-decoration:none;
+						&:hover{
+							text-decoration:underline;
+						}
+					}
+					span{
+						color:#dfdfdf;
+						font-weight:normal;
+						font-family:$ffamily;
+						font-size:11px;
+						padding-left:5px;
+						padding-right:5px;
+					}
+				}
+				.comment_content{
+					@include mp(0px,0px,0px,0px, 5px,0px,10px,0px);
+					color:#666666;
+					font-weight:normal;
+					font-family:$ffamily;
+					font-size:12px;
+					line-height:16px;
+					span{
+						color:#a0a0a0;
+						padding-right:5px;
+					}
+				}
+				&.depth1{
+					padding-left:40px;
+					padding-top:10px;
+					@include bglt(bg($bg :'comment_comment_left_icon.png'), 25px, 19px, no-repeat);
+				}
+			}
+
+			.comment_write{
+				padding:11px 17px;
+				position:relative;
+				.textarea1{
+					height:58px;
+					width:633px;
+				}
+			}
+
+			&.write_and_update{
+				table{
+					tr{
+						td, th{
+							padding-top:6px;
+							padding-bottom:6px;
+							.title{
+								margin-top:3px;
+								display:block;
+							}
+							&.writing_title{
+								.text1{
+									width:668px;
+								}
+							}
+							text-align:left;
+							padding-left:10px;
+							.textarea1{
+								width:728px;
+								height:250px;
+							}
+							.attach_item{
+								padding-left:18px;
+								@include bglt(bg($bg :'image_attach.png'), 0px, 0px, no-repeat);
+								font-size:11px;
+								font-weight:bold;
+								color:#666;
+								line-height:13px;
+								vertical-align:middle;
+								padding-top: 2px;
+								cursor:pointer;
+							}
+							.image_attach{
+								position:relative;
+								display:inline-block;
+								vertical-align:top;
+								padding-left:10px;
+								display:none;
+							}
+						}
+						&.thumbnail_wrapper{
+							display:none;
+							.thumbnail_container{
+								width:183px;
+								height:97px;
+								border-width:1px;
+								border-color:#dfdfdf;
+								border-style:solid;
+								@include borderbox();
+								text-align:center;
+							}
+							.thumbnail_chekcer{
+								margin-top:5px;
+							}
+						}
+					}
+				}
+			}
+
+
+			.appearance_gallery_nodata{
+				width: 100%;
+				text-align: center;
+				padding-top: 50px;
+				display: inline-block;
+				font-size: 12px;
+				font-family: $ffamily;
+				color: #666;
+				padding-bottom: 50px;
+				border-bottom:1px solid #dfdfdf;
+			}
+			.appearance_gallery{
+				&.article_contents{
+					@include mp(0px,0px,10px,0px, 0px,0px,0px,0px);
+					top:auto;
+					left:auto;
+					float:left;
+					width: 756px;
+					margin-left: 4px;
+					li{
+						@include mp(0px,0px,0px,0px, 0px,0px,0px,0px);
+						width:138px;
+						height:176px;
+						position:relative;
+						margin-right:13px;
+						float:left;
+						margin-top: 30px;
+						list-style:none;
+						border:1px solid #dfdfdf;
+						box-sizing:content-box;
+						background-color:white;
+						&:first-child{
+							margin-left:0px;
+						}
+						&:nth-child(5){
+							margin-right:0px;
+						}
+						&:nth-child(10){
+							margin-right:0px;
+						}
+						.imgcnt{
+							width:138px;
+							height:97px;
+							overflow:hidden;
+							position:absolute;
+							top:0px;left:0px;
+							img{
+								border:0;
+							}
+						}
+						.img_description{
+							@include mp0();
+							@include mp(10px,0px,0px,10px, 0px,0px,0px,0px);
+							position:absolute;
+							top:96px;
+							left:0px;
+							font-size:12px;
+							font-family:$ffamily;
+							color:#353535;
+							width: 122px;
+							height: 29px;
+							line-height: 1;
+							overflow: hidden;
+							line-height:14px;
+							span{
+								font-size:11px;
+								color:#bc9c55;
+								strong{
+									font-weight:bold;
+								}
+							}
+						}
+						.datetimes, .writer, .recommend, .hits{
+							color: #979797;
+							font-size: 12px;
+							font-weight: normal;
+							font-family: "dotum";
+							text-decoration: none;
+							display: inline-block;
+							margin: 0px 0px 0px 0px;
+							padding: 0px 0px 0px 0px;
+							line-height: 1;
+							width: 70px;
+							letter-spacing: -0.35px;
+							font-size: 11px;
+							float: right;
+							text-align:right;
+							position:absolute;
+							bottom: 8px;
+							right: 4px;
+						}
+						.datetimes{
+							right: 6px;
+						}
+						.writer, .recommend{
+							bottom: 22px;
+						}
+						.hits, .recommend{
+							left:8px;text-align:left;
+						}
+					}
+				}
+			}
+		}
+	/********************************
+	    파일 프레임
+	********************************/
+		.image_attach_frame{
+			position:absolute;
+			width: 440px;
+			height:200px;
+			background-color:#f8f8f8;
+			border:1px solid #dfdfdf;
+			z-index:300;
+		}
+		.frame_wrapper{
+			.attach_subcription{
+				font-size:12px;
+				color:#666;
+				font-family:$ffamily;
+				line-height:1;
+				padding-bottom:5px;
+				padding-left: 15px;
+				line-height:18x;
+				.num{
+					margin-left:-16px;
+				}
+			}
+			.attach_contents{
+				padding-top:5px;padding-left:10px;
+			}
+			.file_inp{
+				font-size:12px;
+				font-family:$ffamily;
+				width:100%;
+				display:inline-block;
+				cursor:pointer;
+			}
+			.file_btn{
+				margin-top:10px;
+			}
+		}
+
+
+	/********************************
+	    버튼 컨테이너
+	********************************/
+		.button_container1{
+			@include mp(0px,0px,0px,0px, 10px,10px,10px,10px);
+			color:#666;
+			font-size:12px;
+			font-family:$ffamily;
+			letter-spacing:-0.50px;
+			text-align:center;
+			&.separation{
+				border-bottom:1px solid #dfdfdf;
+			}
+		}
+		.button_container2{
+			@extend .button_container1;
+			@include mp(0px,0px,0px,0px, 20px,10px,20px,10px);
+			text-align:right;
+		}
+		.button_container3{
+			@extend .button_container1;
+			@include mp(0px,0px,0px,0px, 10px,10px,10px,10px);
+			text-align:left;
+			.left{
+				text-align:left;
+				width:50%;
+				float:left;
+			}
+			.right{
+				text-align:right;
+				width:50%;
+				float:right;
+			}
+
+		}
+
+	/********************************
+		페이지네이션
+	********************************/
+		.pagination1{
+			clear:both;
+			width:100%;
+			min-height:24px;
+			padding-top:10px;
+			padding-bottom:10px;
+			ul{
+				width:500px;
+				margin: 0 auto;
+				li{
+					width:24px;
+					height:24px;
+					display:block;
+					margin:0;
+					padding:0;
+					float:left;
+					border-width:1px 0px 1px 1px;
+					border-style:solid;
+					border-color:#dfdfdf;
+					background-color:white;
+					overflow:hidden;
+					a, span{
+						text-indent:-9999em;
+						display:block;
+						width:100%;
+						height:100%;
+						text-decoration:none;
+						font-family:$ffamily;
+						font-size:12px;
+						padding-top:6px;
+						line-height:1;
+					}
+					&.first{
+						@include bglt(bg($bg:'pagination_first.png'), 0px,0px,no-repeat);
+					}
+					&.last{
+						@include bglt(bg($bg:'pagination_last.png'), 0px,0px,no-repeat);
+						border-width:1px 1px 1px 1px;
+					}
+
+					&.prev{
+						@include bglt(bg($bg:'pagination_prev.png'), 0px,0px,no-repeat);
+						a{
+							@include bglt(bg($bg:'pagination_prev_a.png'), 0px,0px,no-repeat);
+						}
+					}
+					&.next{
+						@include bglt(bg($bg:'pagination_next.png'), 0px,0px,no-repeat);
+						a{
+							@include bglt(bg($bg:'pagination_next_a.png'), 0px,0px,no-repeat);
+						}
+					}
+
+					&.num,&.active{
+						a, span{
+							color:#666666;
+							text-indent:0;
+							text-align:center;
+						}
+					}
+					&.active{
+						background-color:#372d2a;
+						span{
+							color:#fdf0f0;
+						}
+					}
+				}
+			}
+		}
+
+	/********************************
+		cleditor
+	********************************/
+		.cleditorMain {
+			border: 1px solid #999;
+			padding: 0 1px 1px;
+			background-color: white;
+			-moz-box-sizing: content-box;
+			-webkit-box-sizing: content-box;
+			box-sizing: content-box;
+		}
+
+		.cleditorPopup {
+			-moz-box-sizing: content-box;
+			-webkit-box-sizing: content-box;
+			box-sizing: content-box;
+		}
+
+		.cleditorMain {
+			* {
+				-moz-box-sizing: content-box;
+				-webkit-box-sizing: content-box;
+				box-sizing: content-box;
+			}
+			iframe {
+				border: none;
+				margin: 0;
+				padding: 0;
+			}
+			textarea {
+				overflow-y: scroll;
+				font: 10pt Arial,Verdana;
+				resize: none;
+				outline: none;
+			}
+		}
+
+		.cleditorToolbar {
+			background: url('../images/cleditor_toolbar.png') repeat;
+		}
+
+		.cleditorGroup {
+			float: left;
+			height: 26px;
+		}
+
+		.cleditorButton {
+			float: left;
+			width: 24px;
+			height: 24px;
+			margin: 1px 0 1px 0;
+			background: url('../images/cleditor_buttons.png');
+		}
+
+		.cleditorDisabled {
+			opacity: 0.3;
+			filter: alpha(opacity = 30);
+		}
+
+		.cleditorDivider {
+			float: left;
+			width: 1px;
+			height: 23px;
+			margin: 1px 0 1px 0;
+			background: #CCC;
+		}
+
+		.cleditorPopup {
+			border: solid 1px #999;
+			background-color: white;
+			color: #333333;
+			position: absolute;
+			font: 10pt Arial,Verdana;
+			cursor: default;
+			z-index: 10000;
+		}
+
+		.cleditorList {
+			div {
+				padding: 2px 4px 2px 4px;
+			}
+			p, h1, h2, h3, h4, h5, h6, font {
+				padding: 0;
+				margin: 0;
+				background-color: Transparent;
+			}
+		}
+
+		.cleditorColor {
+			width: 150px;
+			padding: 1px 0 0 1px;
+			div {
+				float: left;
+				width: 14px;
+				height: 14px;
+				margin: 0 1px 1px 0;
+			}
+		}
+
+		.cleditorPrompt {
+			background-color: #F6F7F9;
+			padding: 8px;
+			font-size: 8.5pt;
+			label {
+				padding-bottom: 8px;
+			}
+		}
+
+		.cleditorMsg {
+			background-color: #FDFCEE;
+			width: 150px;
+			padding: 4px;
+			font-size: 8.5pt;
+		}

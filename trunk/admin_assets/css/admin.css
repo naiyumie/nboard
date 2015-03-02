@@ -1,0 +1,130 @@
+/**************************************************************************************************
+
+    admin 최종 관리자 구현단.
+	- CSS 부트스트랩 오버라이드
+
+**************************************************************************************************/
+/********************************
+    베이스 확장
+********************************/
+*{font-family:'dotum'}
+select{font-family:'dotum' !important}
+
+/********************************
+    멀티클래스
+********************************/
+.tac{text-align:center;}
+.table td.tac, table.table thead th.tac{text-align:center;}
+strong.cnt{color:red}
+/********************************
+	layout
+********************************/
+	.navbar-inner{background-color:#1c1718;border-color:#bc9c55;}
+	div.navbar .navbar-inner .container-fluid{padding-left:10px; padding-right:10px;}
+	div.navbar .navbar-inner{ padding:0px;}
+	.navbar .brand{padding:10px 0px; margin:0;}
+	.header-nav a.btn { padding: 10px 10px !important;}
+	#content{background-color:#f8f8f8;min-height: 730px;}
+	.nav-tabs.nav-stacked > li > a, .nav-tabs.nav-stacked > li > ul > li > a {padding: 10px 10px 9px 10px;}
+	.nav>li>a:hover, .nav>li>a:focus {text-decoration: none;background-color: #C4E0FF;}
+	.box-content{padding:5px;  overflow: hidden;}
+	.btn-s{padding-top:3px;padding-bottom:3px;}
+	.row-fluid{min-width:294px;}
+	.dropdown-menu{min-width: 300px;}
+	.dropdown-menu .admin_info{ margin:0;padding:0;}
+	.dropdown-menu .admin_info li{ color:#666;margin:0;padding:0;padding-left:50px !important;list-style:none;padding-top: 3px !important;padding-bottom: 3px !important; }
+	.dropdown-menu .admin_info li span.title{color:#333;margin-left:-50px;width:100px; display:inline-block;text-align:right;}
+	.dropdown-menu li a{ text-align: right;}
+	footer a{color:gray;}
+	#sidebar-left .fa{padding-right: 6px;}
+
+/********************************
+    admin main
+********************************/
+	.quick-button{ font-size: 18px;font-weight:bold;}
+	.quick-button.metro p{text-align:center;margin-bottom: 10px;}
+	.notification{border-width:0px;text-shadow:none;box-shadow: none;padding:6px 6px;font-size:22px;}
+	.quick-button:hover .notification{box-shadow: none;}
+	.quick-button.metro i {font-size: 44px;}
+	.orange2{background-color:#fa8144 !important;background-image:none; border-color:#fa8144 !important;}
+
+
+/********************************
+    manual_iframe
+********************************/
+	.manual_iframe{width:96%;height:96%;background-color:white;position:absolute;top:2%;left:2%;z-index:900;}
+	.manual_iframe_inner{overflow-x:hidden;overflow-y:scroll;padding: 10px;}
+	.manual_heading{margin:0;padding:0;font-size: 24px; padding-bottom:24px;color:#333;}
+	.manual_close_button{color:#333;text-decoration:none;position:fixed;top:0px;right:0px; display: inline-block; width: 36px; height: 48px; line-height: 48px; vertical-align: text-top; background-image: url('../img/glyphicons.svg'); background-position: -332px -949px; background-repeat: no-repeat; vertical-align: top;}
+
+
+/********************************
+    curtain
+********************************/
+	.curtain{ background:url('/admin_assets/img/curtain.png') 0 0 repeat; width:100%;height:100%; position:absolute;top:0;left:0; z-index:900; }
+
+
+/********************************
+	form and tables
+********************************/
+	.form-horizontal .control-label {float: left; width:150px;}
+	table.table td{vertical-align:middle}
+	table.table td a{width:100%;display:inline-block;}
+	table.table td a.ib{display:inline-block;width:auto;}
+	.table thead th {vertical-align: middle;text-align:center;}
+	.table thead th:first-child {text-align:left;}
+	.table tbody tr:hover td {background-color:#C4E0FF;}
+	.box-header{background-color:white; border-bottom:1px solid #DDDDDD;  margin-bottom: 10px;}
+	.box-header h2{font-weight:bold;}
+	.box-header p{float:right;}
+	.box-footer {background-color: white;}
+	.box-footer-inner{padding:5px;}
+	.form-horizontal .control-group { margin-bottom: 5px; }
+	textarea{resize:none;}
+	textarea.input-full{height: 60px;}
+	.input-full{ float: left; width: 100%; margin-left: -15px; }
+	.checkbox, input, select, .uneditable-input, .cleditorMain, pre{margin-left:-15px;}
+	.cleditorPopup input, .cleditorPopup .checkbox, .cleditorPopup select{margin-left:0px !important;}
+	.radio{margin-left:-6px;}
+	@media (max-width: 870px) {
+		.form-horizontal .control-label { float:none; display:inline-block; text-align:left; width:100%; }
+		.form-horizontal .controls { margin-left: 0 !important; width:95%; }
+		.checkbox, input, .radio, select, textarea, .uneditable-input, .cleditorMain{margin-left:0px !important;}
+	}
+	.radio, .checkbox { padding-left: 0px; }
+	div.radio { margin-top: 0px !important; }
+	.timepicker{display: inline-block;margin-left: -4px;cursor: pointer;}
+	.form-horizontal .form-actions {padding-left: 174px;}
+	.form-actions {margin: 20px -5px -30px -5px;}
+	.box-controls-container{padding-bottom:10px;}
+	.btn{border:0px !important;}
+	.btn-search{background-color:#666;border-color:#666;}
+	.btn-trash{background-color:#999;border-color:#999;}
+	select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], input[type="file"], .uneditable-input {border-color:#ccc !important;}
+	.inline-inp{ vertical-align:baseline; display:inline-block; margin:0;padding:0;line-height:1;padding-top:2px !important;padding-bottom:2px !important;margin:0 !important; height:auto !important;}
+	select.inline-inp{vertical-align:middle; min-height:26px;}
+	.picker-icon{display: inline-block; margin: 0; padding: 0; width: 30px; height: 30px; }
+	.fail{color:#C80000}
+	.comment_article{padding:5px 15px;border-bottom:1px solid #DDDDDD;}
+	.comment_article.depth1{padding-left:40px;}
+	.comment_content{padding-left:25px;}
+	.category_choose{float:right;}
+	.category_choose select{margin:0px;}
+
+/********************************
+    breadcrumb
+********************************/
+	.breadcrumb_container{position:relative;}
+	.breadcrumb_help{position:absolute;top:50%;margin-top:-10px;right:0px;text-decoration:none;}
+	.breadcrumb_help i{text-decoration:none;}
+
+
+/********************************
+    agent scope
+********************************/
+	.agent_scope_ie input.inline-inp{padding-top:3px !important;line-height:14px !important;}
+	.agent_scope_ie .btn-s{padding-top:1px !important;padding-bottom:2px !important;}
+	.agent_scope_ie .btn i{margin-top:3px !important;}
+	.agent_scope_firefox .table{clear:left;}
+	.agent_scope_safari select{border: 1px solid !important;}
+	.agent_scope_safari .hasDatepicker, .agent_scope_safari .nTimePicker{vertical-align:top;}

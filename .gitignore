@@ -1,0 +1,11 @@
+*.psd
+
+**/branch/
+**/ref/01.design/
+**/ref/01.design_assets/
+**/ref/02.front-end/
+**/ref/03.server-side/
+**/ref/04.dev code snippets/
+**/ref/05.todo/
+**/tags/
+**/trunk/.sass-cache/

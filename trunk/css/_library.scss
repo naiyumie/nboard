@@ -1,0 +1,137 @@
+@charset "UTF-8";
+// ****************************************************************************
+//	NAIYUMIE KING WANG JJANG Front End Developer <naiyumie@gmail.com>
+//	FileType:CRLF, Encording:UTF-8, Tab&Space:4/4
+//	------------------------------------------------------------------------
+//	_library.scss
+// ****************************************************************************
+
+/**************************************************************************************************
+
+    _include_commons
+
+**************************************************************************************************/
+	/********************************
+		block
+	********************************/
+		.boxmodel{display:block;margin:0;padding:0;}
+		.stmt{display:inline-block;width:100%;}
+
+		//position & size
+
+		@mixin posr($width, $height, $border-width, $border-color){
+			position:relative;
+			width:$width;
+			height:$height;
+			border-width:$border-width;
+			border-color:$border-color;
+			border-style:solid;
+		}
+
+		@mixin posablt($left,$top,$width,$height,$bgcolor){
+			@extend .boxmodel;
+			position:absolute;
+			left:$left;
+			top:$top;
+			width:$width;
+			height:$height;
+			background-color:$bgcolor;
+		}
+
+		@mixin posabrt($right,$top,$width,$height,$bgcolor){
+			@extend .boxmodel;
+			position:absolute;
+			right:$right;
+			top:$top;
+			width:$width;
+			height:$height;
+			background-color:$bgcolor;
+		}
+
+		@mixin valign($content_height){
+			display:block;
+			position:absolute;
+			height:$content_height;
+			top:50%;
+			margin-top:-($content_height/2);
+		}
+
+		@mixin mp0(){
+			margin:0;
+			padding:0;
+		}
+		@mixin mp($mt, $mr, $mb, $ml, $pt, $pr, $pb, $pl){
+			margin: $mt $mr $mb $ml;
+			padding: $pt $pr $pb $pl;
+		}
+
+		@mixin center(){
+			margin: 0 auto;
+		}
+
+		@mixin wh($width, $height){
+			width:$width;
+			height:$height;
+		}
+
+	/********************************
+		inline / inline-block
+	********************************/
+		@mixin ellipse(){
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			overflow:hidden;
+		}
+		@mixin ellipsis(){
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			overflow:hidden;
+		}
+
+		@mixin typo($font-weight,$font-size,$line-height,$color,$letter-spacing,$text-indent){
+			font-weight:$font-weight;
+			font-size:$font-size;
+			line-height:$line-height;
+			color:$color;
+			letter-spacing:$letter-spacing;
+			text-indent:$text-indent;
+		}
+		@mixin iwh($width, $height){
+			width:$width;
+			height:$height;
+			display:inline-block;
+		}
+
+	/********************************
+		background
+	********************************/
+		$image_path : '../images/';
+		@function bg($bg){
+			@return $image_path+$bg;
+		}
+
+		@mixin bglt($background-image,$background-position-left,$background-position-top,$background-repeat){
+			background-image:url($background-image);
+			background-position:$background-position-left $background-position-top;
+			background-repeat:$background-repeat;
+		}
+
+		@mixin bgg($background-image){
+			background-image:url($background-image) !important;
+		}
+
+
+	/********************************
+		borderbox
+	********************************/
+
+		@mixin boxborder(){
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		@mixin borderbox(){
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="kr">
+<head>
+	<title>filelist</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+	<style>
+		/* basic */
+		*{font-size:12px;line-height:1;font-family:'dotum', 'Malgun Gothic'; color:#666;}
+		body{background-color:white;color:#666;}
+		h1{font-size:24px;font-weight:bold; color:#486f9f;}
+		h2{font-size:18px;font-weight:normal; color:#333;}
+		h2.name{color:#666;}
+		h2.name span{font-size:18px;}
+		h2 .mail{font-size:18px;text-decoration:underline;color:#666;}
+		h3{margin-top:50px;font-size:14px;font-weight:bold; color:#333;}
+		h3:before{content:"ㆍ"}
+		a{font-size:12px;font-weight:normal;text-decoration:none;color:#0099CC;}
+		a:hover{text-decoration:underline;color:#0099CC;}
+		.important{background-color:#eff5ff;color:#666;padding:1em;margin-top:1em;}
+		.important strong{font-size:14px;font-weight:bold;color:#333}
+		.toolbox{background-color:#eff5ff;color:#666;padding:1em;margin-top:1em;}
+		.toolbox strong{font-size:14px;font-weight:bold;color:#333}
+		hr{border-collapse:collapse;border:1px solid #333;}
+
+		/* tbl contents */
+		.dtbl { display: table; border:1px solid #333;width:100%;}
+		.dtbl .dtr { display: table-row; }
+		.dtbl .dtr .dtd { display: table-cell; border-bottom:1px solid #e2e6ef;border-left:1px solid #e2e6ef;padding-top:3px;padding-bottom:3px;padding-left:3px;padding-right:3px;}
+		.dtbl .dtr .dtd.dhead{background-color:#fcfaf5;width:37px}
+		.dtbl .dtr .thead{font-weight:bold;background-color:#eff5ff;text-align:center;}
+		.dtbl .dtr .thead.dhead{background-color:#eff5ff;}
+		.dtbl .dtr .dtd.thead.dhead{width:4%;background-color:#eff5ff;vertical-align:middle;}
+		.dtbl .dtr .dtd.thead.dbody.dfilename{width:26%;}
+		.dtbl .dtr .dtd.thead.dbody.ddesc{width:30%;text-align:center;}
+		.dtbl .dtr .dtd.thead.dbody.ddate{width:12%;text-align:center;}
+		.dtbl .dtr .dtd.thead.dbody.dcontent{width:30%;text-align:center;}
+		.dtbl .dtr .dtd.thead.dbody strong{width:100%;display:inline-block;}
+		.dtbl .dtr .dtd.thead.dbody em{width:100%;display:inline-block;font-weight:normal;font-style:normal;font-size:11px;}
+		.dtbl .dtr .dtd.dbody{vertical-align:middle;}
+		.filename{ display:inline-block;width:100%;color:#00B5F2;}
+		.desc{ display:inline-block;width:100%;}
+		.date, .content{font-size:12px;display:inline-block;margin:0;padding:0;padding-left:20px;}
+		.dates, .contents{}
+		.content, .contents{text-align:left;}
+
+		/* check */
+		.dtr.compleated { background-color: #f4f4f4;}
+		/* for mobile */
+		@media all and (min-width:320px) and (max-width:1024px){
+			.dtbl { display: block; border:1px solid #333;width:100%;}
+			.dtbl .dtr { display: block; }
+			.dtbl .dtr .dtd { display: block; }
+			.dtbl .dtr .dtd.dhead{width:100%;padding:0px;border:0px;}
+			.dtbl .dtr .thead{font-weight:bold;}
+			.dtbl .dtr .dtd.thead.dhead, .dtbl .dtr .dtd.dhead{width:100%;padding:0px;border:0px;border-bottom:1px solid #e2e6ef;font-weight:bold;}
+			.dtbl .dtr .dtd.thead.dhead, .dtbl .dtr .dtd.thead.dbody.dfilename,.dtbl .dtr .dtd.thead.dbody.ddesc, .dtbl .dtr .dtd.thead.dbody.dcontent, .dtbl .dtr .dtd.thead.dbody.ddate{width:100%;padding:0px;border:0;border-bottom:1px solid #e2e6ef;}
+			.dtbl .dtr .dtd.thead.dbody strong{display:inline;width:auto;}
+			.dtbl .dtr .dtd.thead.dbody em{display:inline;font-weight:normal;font-style:normal;font-size:11px;}
+			.dtbl .dtr .dtd.dbody{vertical-align:middle;border-bottom:1px solid #e2e6ef;}
+		}
+	</style>
+	<script>
+		// use >> <a href=javascript:pop('./html/act03_pop_01.html','','757','442','n');>[열기]</a>
+		var pop = function(html_uri, pop_up_name, option_width, option_height, option_selection){
+			var popupObject = null;
+			var option  = "width="   + option_width                      +","
+			option += "height="      + option_height                     +","
+			option += "left="        + (screen.width - option_width)/2   +","
+			option += "top="         + (screen.height - option_height)/2 +",";
+			if(option_selection == 'yes' || option_selection == 'y'){
+				option += 'fullscreen=no, location=no, scrollbars=yes, menubar=no, toolbar=no, titlebar=no, directories=no, resizable=yes';
+			} else if(option_selection == 'no' || option_selection == 'n'){
+				option += 'fullscreen=no, location=no, scrollbars=no, menubar=no, toolbar=no, titlebar=no, directories=no, resizable=no';
+			} else {
+				option += option_selection;
+			}
+			popupObject = window.open(html_uri,pop_up_name, option);
+		}
+	</script>
+</head>
+<body>
+	<h1>filelist of CI_Naiyumie 나이유미 게시판 프로젝트 (2015-2-7~진행중)</h1>
+	<h2 class="name">published by Front-End Developer <span>naiyumie </span> (<a href="mailto:naiyumie@gmail.com" class="mail">naiyumie@gmail.com</a>) </h2>
+
+	<div class="important">
+		<strong>■ 프로젝트 개요 </strong><br />
+			<ul><li>해당 웹퍼블리싱 페이지의 doctype은 html5로 결정함.</li><li>html파일은 w3c validator와 K-WAH4.0 툴을 사용하여 점검 하며 준수율 100% 기본으로 한다.</li><li>이하 자세한 규칙은 {projectDir}/ref/ftrules의 내용을 따른다.</li></ul>
+	</div>
+
+	<div class="important">
+		<strong>■ 특이사항 </strong><br />
+			<ul><li>현재 화면 위주로 퍼블리싱 작업중이 랍니다.</li></ul>
+	</div>
+
+
+
+
+	<div class="html_outputs">
+		<h3>file of contents [html] </h3>
+		<div class="dtbl">
+			<div class="dtr">
+				<div class="dtd thead dhead">no</div>
+				<div class="dtd thead dbody dfilename"><strong>파일명</strong><em>(파일이름과 경로)</em></div>
+				<div class="dtd thead dbody ddesc"><strong>구분</strong><em>(파일의 용도)</em></div>
+				<div class="dtd thead dbody ddate"><strong>일자</strong><em>(작성 및 변경일자)</em></div>
+				<div class="dtd thead dbody dcontent"><strong>주석</strong><em>(기타 변경 내용 및 특이사항)</em></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">0</div>
+				<div class="dtd dbody dfilename"><a href="./html/main.html" target="_blank" class="filename">./html/main.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">메인</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-08</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">1.1</div>
+				<div class="dtd dbody dfilename"><a href="./html/introduce_0.html" target="_blank" class="filename">./html/introduce_0.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">소개 - NB 프로젝트 소개</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-09</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">1.2</div>
+				<div class="dtd dbody dfilename"><a href="./html/introduce_1.html" target="_blank" class="filename">./html/introduce_1.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">소개 - MVC 패턴이란?</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-09</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">1.3</div>
+				<div class="dtd dbody dfilename"><a href="./html/introduce_2.html" target="_blank" class="filename">./html/introduce_2.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">소개 - 코드이그나이터 소개</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-09</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">1.4</div>
+				<div class="dtd dbody dfilename"><a href="./html/introduce_3.html" target="_blank" class="filename">./html/introduce_3.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">소개 - 웹 접근성 소개</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-09</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">2</div>
+				<div class="dtd dbody dfilename"><a href="./html/singlesign.html" target="_blank" class="filename">./html/singlesign.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">싱글 사인 인(로그인)</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-10</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+
+
+			<div class="dtr  ">
+				<div class="dtd dhead">3.1</div>
+				<div class="dtd dbody dfilename"><a href="./html/signup_licence_agreement.html" target="_blank" class="filename">./html/signup_licence_agreement.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">멤버 조인 - 약관동의</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">3.2</div>
+				<div class="dtd dbody dfilename"><a href="./html/signup_join_form.html" target="_blank" class="filename">./html/signup_join_form.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">멤버 조인 - 기본정보입력</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">3.3</div>
+				<div class="dtd dbody dfilename"><a href="./html/signup_join_authentication.html" target="_blank" class="filename">./html/signup_join_authentication.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">멤버 조인 - 가입인증</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">3.4</div>
+				<div class="dtd dbody dfilename"><a href="./html/signup_compleate.html" target="_blank" class="filename">./html/signup_compleate.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">멤버 조인 - 가입완료</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+
+
+			<div class="dtr  ">
+				<div class="dtd dhead">3.4</div>
+				<div class="dtd dbody dfilename"><a href="./html/signinfo_check_authentication.html" target="_blank" class="filename">./html/signinfo_check_authentication.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">멤버 정보 조회 - 조회를 위한 패스워드 확인</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+			<div class="dtr  ">
+				<div class="dtd dhead">3.5</div>
+				<div class="dtd dbody dfilename"><a href="./html/signinfo_retrieve_and_update.html" target="_blank" class="filename">./html/signinfo_retrieve_and_update.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">멤버 정보 조회 - 조회 및 수정</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+
+			<div class="dtr  ">
+				<div class="dtd dhead">4.</div>
+				<div class="dtd dbody dfilename"><a href="./html/findid.html" target="_blank" class="filename">./html/findid.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">아이디 찾기</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+			<div class="dtr  ">
+				<div class="dtd dhead">5.</div>
+				<div class="dtd dbody dfilename"><a href="./html/findpassword.html" target="_blank" class="filename">./html/findpassword.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">비밀번호 찾기</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+
+
+			<div class="dtr  ">
+				<div class="dtd dhead">6.1</div>
+				<div class="dtd dbody dfilename"><a href="./html/board_list.html" target="_blank" class="filename">./html/board_list.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">게시판 - 목록</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+			<div class="dtr  ">
+				<div class="dtd dhead">6.2</div>
+				<div class="dtd dbody dfilename"><a href="./html/board_write.html" target="_blank" class="filename">./html/board_write.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">게시판 - 쓰기</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+			<div class="dtr  ">
+				<div class="dtd dhead">6.3</div>
+				<div class="dtd dbody dfilename"><a href="./html/board_retrieve.html" target="_blank" class="filename">./html/board_retrieve.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">게시판 - 조회</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+			<div class="dtr  ">
+				<div class="dtd dhead">6.4</div>
+				<div class="dtd dbody dfilename"><a href="./html/board_update.html" target="_blank" class="filename">./html/board_update.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">게시판 - 수정</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-11</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+			<div class="dtr  ">
+				<div class="dtd dhead">7.1</div>
+				<div class="dtd dbody dfilename"><a href="./html/member_leave.html" target="_blank" class="filename">./html/member_leave.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">회원탈퇴</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-12</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+			<div class="dtr  ">
+				<div class="dtd dhead">8.1</div>
+				<div class="dtd dbody dfilename"><a href="./html/mailform_sample.html" target="_blank" class="filename">./html/mailform_sample.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">메일폼 - 아이디찾기</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-13</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+			<div class="dtr  ">
+				<div class="dtd dhead">8.2</div>
+				<div class="dtd dbody dfilename"><a href="./html/mailform_sample2.html" target="_blank" class="filename">./html/mailform_sample.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">메일폼 - 패스워드찾기</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-13</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+			<div class="dtr  ">
+				<div class="dtd dhead">8.2</div>
+				<div class="dtd dbody dfilename"><a href="./html/gallery_list.html" target="_blank" class="filename">./html/gallery_list.html</a></div>
+				<div class="dtd dbody ddesc"><span class="desc">갤러리 리스트</span></div>
+				<div class="dtd dbody ddate"><ul class="date"><li class="dates">2015-02-16</li></ul></div>
+				<div class="dtd dbody dcontent"><ul class="content"></ul></div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
