@@ -2,7 +2,7 @@ The Naiyumie board using CodeIgniter based on PHP.
 that's like a South Korea style web.
 
 if you love Naiyumie board with built the your website.
-I wonder your built web site URL returning with mail to "naiyumie@gmail.com" :D
+I wonder to returning your built web site URL  with mail to "naiyumie@gmail.com" :D
 
 Copyright 2015, Naiyumie (Chris Won),
 Dual licensed under the MIT or GPL Version 3 licenses.
