@@ -1,4 +1,4 @@
-The Naiyumie board using codeigniter on php.
+The Naiyumie board using CodeIgniter based on PHP.
 that's like a South Korea style web.
 
 if you love Naiyumie board with built the your website.
