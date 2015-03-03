@@ -1,23 +1,33 @@
 # [naiyumie board]
 
 ## Introduce
+
 The Naiyumie board using CodeIgniter based on PHP.
+
 that's like a South Korea style web.
 
 if you love Naiyumie board with built the your website.
+
 I wonder to returning your built web site URL  with mail to "naiyumie@gmail.com" :D
 
 ## Documentation
+
 flow to link here(https://github.com/naiyumie/nboard/tree/master/ref/00.architect).
+
 you necessary to pdf viewer and Korean reading product skill.
 
 ## Based open source
+
 We must think to "thank you" for opensource creators.
+
 I listing uses and quotation to opensource that here(http://naiyumie.dothome.co.kr/statics/page/introduce_4).
+
 you may reading to Korean.
 
 ## Copyright and license
+
 Copyright 2015, Naiyumie (Chris Won),
+
 Dual licensed under the MIT or GPL Version 3 licenses.
 
 
@@ -28,7 +38,7 @@ Dual licensed under the MIT or GPL Version 3 licenses.
 
 
 
-### locale translate :
+## locale translate :
 
 [naiyumie board]
 
