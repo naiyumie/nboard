@@ -49,6 +49,9 @@ class Boardm extends CI_Model {
 				$query = $this->db->get();
 				if ($query->num_rows() > 0) {
 					$ret = $query->result_array();
+					foreach($ret as $k=>$v){
+						$ret[$k]['title'] = trim(strip_tags($ret[$k]['title']));
+					}
 					return $ret;
 				} else {
 					return FALSE;
@@ -115,6 +118,7 @@ class Boardm extends CI_Model {
 
 				if ($query->num_rows() > 0) {
 					$ret = $query->row_array();
+					$ret['title'] = trim(strip_tags($ret['title']));
 					return $ret;
 				} else {
 					return FALSE;
@@ -313,6 +317,9 @@ class Boardm extends CI_Model {
 
 				if ($query->num_rows() > 0) {
 					$ret = $query->result_array();
+					foreach($ret as $k=>$v){
+						$ret[$k]['title'] = trim(strip_tags($ret[$k]['title']));
+					}
 					return $ret;
 				} else {
 					return FALSE;
