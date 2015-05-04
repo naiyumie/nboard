@@ -75,7 +75,7 @@
 													<a href="/board/lists/<?php echo $v['category']?>/0/" target="_blank" class="ib"><i class="icon-external-link"></i></a>
 												</td>
 												<td>
-													<a href="/admin_board_article_manage/lists/<?php echo $v['category']?>/0/" class="ib">/admin_board/lists/<?php echo $v['category']?>/0/</a>
+													<a href="/admin_board_article_manage/lists/<?php echo $v['category']?>/0/" class="ib">/admin_board_article_manage/lists/<?php echo $v['category']?>/0/</a>
 													<a href="/admin_board_article_manage/lists/<?php echo $v['category']?>/0/" target="_blank" class="ib"><i class="icon-external-link"></i></a>
 												</td>
 											</tr>
